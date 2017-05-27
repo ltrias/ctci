@@ -9,23 +9,26 @@ class LinkedList{
             this.head = newNode;
         }else{
             while( node.next ){
-                console.log(node);
                 node = node.next;
             }
             node.next = newNode;
         }
     }
 
-    get size(){
-        let i = 0;
-        let node = this.head;
-
-        while( node != null ){
-            i++;
-            node = node.next;
+    remove(value){
+        if(this.head.value === value){
+            this.head = this.head.next;
         }
 
-        return i;
+        let node = this.head;
+
+        while( node.next ){
+            if( node.next.value === value ){
+                node.next = node.next.next;
+                break;
+            }
+            node = node.next;
+        }
     }
 
     toArray(){
