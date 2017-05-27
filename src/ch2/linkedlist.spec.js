@@ -48,7 +48,7 @@ describe('Linked List', () => {
             list.toArray().should.deep.equal([2]);
         });
 
-        it('middle element - Question 2.3', () => {
+        it('middle element', () => {
             list.appendToTail(1);
             list.appendToTail(2);
             list.appendToTail(3);
