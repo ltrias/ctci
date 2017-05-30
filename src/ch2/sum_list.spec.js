@@ -13,7 +13,7 @@ describe('sum lists ', () => {
   beforeEach(() => {
     list1 = new LinkedList();
     list2 = new LinkedList();
-    partitioner = new Sum(list1, list2);
+    sum = new Sum(list1, list2);
   });
 
   it('simple case - unit first', () =>{
