@@ -13,16 +13,17 @@ class Sum{
         let digit2 = this.list2.head;
         let result = new LinkedList();
 
-        while( digit1 && digit2 ){
-            let sum = digit1.value + digit2.value;
+        while( digit1 || digit2 ){
+            let value1 = digit1 ? digit1.value : 0;
+            let value2 = digit2 ? digit2.value : 0;
+            let sum = value1 + value2;
             result.appendToTail(sum);
 
-            digit1 = digit1.next;
-            digit2 = digit2.next;
+            digit1 = digit1 ? digit1.next : null;
+            digit2 = digit2 ? digit2.next : null;
         }
 
         return result;
-
     }
 
     sumUnitLast(){

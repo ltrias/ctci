@@ -42,7 +42,7 @@ describe('sum lists ', () => {
 
     let result = sum.sum();
 
-    result.toArray().should.deep.equal([2, 8, 3, 9]);
+    result.toArray().should.deep.equal([8, 3, 9, 2]);
   });
 
   it('with remainder - unit first', () =>{
