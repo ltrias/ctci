@@ -56,7 +56,7 @@ describe('sum lists ', () => {
 
     let result = sum.sum();
 
-    result.toArray().should.deep.equal([1, 1, 0, 9]);
+    result.toArray().should.deep.equal([0, 1, 0, 1]);
   });
 
   it('simple case - unit last', () =>{
