@@ -45,7 +45,7 @@ describe('sum lists ', () => {
     result.toArray().should.deep.equal([2, 8, 3, 9]);
   });
 
-  it('with ramainder - unit first', () =>{
+  it('with remainder - unit first', () =>{
     list1.appendToTail(7);
     list1.appendToTail(1);
     list1.appendToTail(6);
@@ -88,7 +88,7 @@ describe('sum lists ', () => {
     result.toArray().should.deep.equal([2, 8, 3, 9]);
   });
 
-  it('with ramainder - unit last', () =>{
+  it('with remainder - unit last', () =>{
     list1.appendToTail(7);
     list1.appendToTail(1);
     list1.appendToTail(6);
