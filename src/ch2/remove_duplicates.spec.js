@@ -1,7 +1,9 @@
 'use strict'
 
 let chai = require('chai');
-let LinkedList = require('./linkedlist');
+let List = require('./linkedlist');
+let LinkedList = List.LinkedList;
+let Node = List.Node;
 let RemoveDuplicates = require('./remove_duplicates');
 
 chai.should();

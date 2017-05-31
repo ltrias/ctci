@@ -1,8 +1,11 @@
 'use strict'
 
 let chai = require('chai');
-let LinkedList = require('./linkedlist');
 let Sum = require('./sum_list');
+
+let List = require('./linkedlist');
+let LinkedList = List.LinkedList;
+let Node = List.Node;
 
 chai.should();
 

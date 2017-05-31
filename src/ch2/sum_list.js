@@ -1,6 +1,9 @@
 'use strict'
 
-let LinkedList = require('./linkedlist');
+let List = require('./linkedlist');
+let LinkedList = List.LinkedList;
+let Node = List.Node;
+// import LinkedList  from './linkedlist';
 
 class Sum{
     constructor(list1, list2){
@@ -43,10 +46,19 @@ class Sum{
         return result;
     }
 
+    // 617
+    // 321
     addDigits(d1, d2, r){
         if( d1 && d2 ){
-            r.appendToTail(d1.value + d2.value);
             this.addDigits(d1.next, d2.next, r);
+            let value = d1.value + d2.value;
+            if( r.head ){
+                r.appendToTail(r.head.value);
+                r.head.value = value;
+            }else{
+                r.appendToTail(value);
+            }
+            console.log(r.toArray());
         }
     }
 }
