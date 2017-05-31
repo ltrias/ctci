@@ -36,7 +36,18 @@ class Sum{
     }
 
     sumUnitLast(){
-        
+        let result = new LinkedList();
+
+        this.addDigits(this.list1.head, this.list2.head, result);
+
+        return result;
+    }
+
+    addDigits(d1, d2, r){
+        if( d1 && d2 ){
+            r.appendToTail(d1.value + d2.value);
+            this.addDigits(d1.next, d2.next, r);
+        }
     }
 }
 
