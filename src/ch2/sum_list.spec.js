@@ -86,7 +86,7 @@ describe('sum lists ', () => {
     list2.appendToTail(2);
     list2.appendToTail(1);
 
-    let result = sum.sum();
+    let result = sum.sumUnitLast();
 
     result.toArray().should.deep.equal([2, 9, 3, 8]);
   });

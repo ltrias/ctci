@@ -40,6 +40,8 @@ class Sum{
     sumUnitLast(){
         let result = new LinkedList();
 
+        this.addPaddingIfNeccessary(this.list1, this.list2);
+
         let firstDigit = this.addDigits(this.list1.head, this.list2.head, result);
         if( firstDigit ){
             result.appendToHead(firstDigit);
@@ -48,8 +50,34 @@ class Sum{
         return result;
     }
 
-    // 617
-    // 393
+    addPaddingIfNeccessary(list1, list2){
+        let list1Size = 0;
+        let list2Size = 0;
+
+        let node = list1.head;
+        while( node ){
+            list1Size++;
+            node = node.next;
+        }
+
+        node = list2.head;
+        while( node ){
+            list2Size++;
+            node = node.next;
+        }
+
+        let padding = Math.abs(list1Size - list2Size);
+        if( padding ){
+            let targetList = list1Size < list2Size ? list1 : list2;
+
+            for(let i = 0; i < padding; i++){
+                targetList.appendToHead(0);
+            }
+        }
+    }
+
+    // 2617
+    //  393
     addDigits(d1, d2, res){
         if( d1 && d2 ){
             let value = d1.value + d2.value + this.addDigits(d1.next, d2.next, res);
