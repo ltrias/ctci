@@ -105,4 +105,20 @@ describe('sum lists ', () => {
     result.toArray().should.deep.equal([1, 0, 1, 0]);
   });
 
+  it('bigger number with remainder - unit last', () =>{
+    list1.appendToTail(9);
+    list1.appendToTail(9);
+    list1.appendToTail(9);
+    list1.appendToTail(9);
+    
+    list2.appendToTail(9);
+    list2.appendToTail(9);
+    list2.appendToTail(9);
+    list2.appendToTail(9);
+
+    let result = sum.sumUnitLast();
+
+    result.toArray().should.deep.equal([1, 9, 9, 9, 8]);
+  });
+
 });
