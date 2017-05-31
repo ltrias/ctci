@@ -21,6 +21,15 @@ describe('Linked List', () => {
     it('appendToTail', () => {
        list.appendToTail('a'); 
        list.appendToTail('b'); 
+       
+       list.toArray().should.deep.equal(['a', 'b']);
+    });
+
+    it('appendToTail', () => {
+       list.appendToHead('a'); 
+       list.appendToHead('b');
+
+       list.toArray().should.deep.equal(['b', 'a']);
     });
 
     describe('toArray', () =>{

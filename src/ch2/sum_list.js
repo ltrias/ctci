@@ -40,21 +40,26 @@ class Sum{
     sumUnitLast(){
         let result = new LinkedList();
 
-        this.addDigits(this.list1.head, this.list2.head, result);
+        this.addDigits(this.list1.head, this.list2.head, 0, result);
 
         return result;
     }
 
     // 617
-    // 321
-    addDigits(d1, d2, r){
+    // 393
+    addDigits(d1, d2, rem, res){
         if( d1 && d2 ){
-            this.addDigits(d1.next, d2.next, r);
-            let value = d1.value + d2.value;
-            
-            let newHead = new Node(value);
-            newHead.next = r.head;
-            r.head = newHead
+            this.addDigits(d1.next, d2.next, rem, res);
+            let value = d1.value + d2.value + rem;
+
+            if( value >= 10 ){
+                rem = 1;
+                value -= 10;
+            }else{
+                rem = 0;
+            }
+
+            res.appendToHead(value);
         }
     }
 }

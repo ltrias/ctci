@@ -15,6 +15,16 @@ class LinkedList{
         }
     }
 
+    appendToHead(value){
+        let newNode = new Node(value);
+
+        if( this.head ){
+            newNode.next = this.head;
+        }
+        
+        this.head = newNode;
+    }
+
     remove(value){
         if(this.head.value === value){
             this.head = this.head.next;
