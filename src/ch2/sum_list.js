@@ -3,7 +3,6 @@
 let List = require('./linkedlist');
 let LinkedList = List.LinkedList;
 let Node = List.Node;
-// import LinkedList  from './linkedlist';
 
 class Sum{
     constructor(list1, list2){
@@ -52,13 +51,10 @@ class Sum{
         if( d1 && d2 ){
             this.addDigits(d1.next, d2.next, r);
             let value = d1.value + d2.value;
-            if( r.head ){
-                r.appendToTail(r.head.value);
-                r.head.value = value;
-            }else{
-                r.appendToTail(value);
-            }
-            console.log(r.toArray());
+            
+            let newHead = new Node(value);
+            newHead.next = r.head;
+            r.head = newHead
         }
     }
 }
