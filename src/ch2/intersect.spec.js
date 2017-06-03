@@ -91,17 +91,19 @@ describe('Intersect', () => {
     let list3 = new LinkedList();
     let intersectionNode = new Node(3);
     list3.appendNodeToTail(intersectionNode);
+    list3.appendToTail(4);
     list3.appendToTail(5);
-    list3.appendToTail(6);
 
     list1.head = list3.head;
-    list1.appendToHead(2);
     list1.appendToHead(1);
 
     list2.head = list3.head;
     list2.appendToHead(9);
     list2.appendToHead(8);
     list2.appendToHead(7);
+
+    console.log(list1.toArray());
+    console.log(list2.toArray());
 
     let result = intersect.findIntersection();
     result = result && intersectionNode == result;
