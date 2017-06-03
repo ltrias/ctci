@@ -102,9 +102,6 @@ describe('Intersect', () => {
     list2.appendToHead(8);
     list2.appendToHead(7);
 
-    console.log(list1.toArray());
-    console.log(list2.toArray());
-
     let result = intersect.findIntersection();
     result = result && intersectionNode == result;
 
