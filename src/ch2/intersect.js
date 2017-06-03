@@ -10,7 +10,7 @@ class Intersect{
     }
 
     findIntersection(){
-    
+        return {};
     }
 }
 
