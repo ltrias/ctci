@@ -3,16 +3,7 @@
 class LinkedList{
     appendToTail(value){
         let newNode = new Node(value);
-        let node = this.head;
-
-        if( !node ){
-            this.head = newNode;
-        }else{
-            while( node.next ){
-                node = node.next;
-            }
-            node.next = newNode;
-        }
+        this.appendNodeToTail(newNode);
     }
 
     appendToHead(value){
@@ -25,19 +16,16 @@ class LinkedList{
         this.head = newNode;
     }
 
-    remove(value){
-        if(this.head.value === value){
-            this.head = this.head.next;
-        }
-
+    appendNodeToTail(newNode){
         let node = this.head;
 
-        while( node.next ){
-            if( node.next.value === value ){
-                node.next = node.next.next;
-                break;
+        if( !node ){
+            this.head = newNode;
+        }else{
+            while( node.next ){
+                node = node.next;
             }
-            node = node.next;
+            node.next = newNode;
         }
     }
 
