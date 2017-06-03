@@ -1,6 +1,7 @@
 'use strict'
 
 let chai = require('chai');
+let expect = chai.expect;
 let Intersect = require('./intersect');
 
 let List = require('./linkedlist');
@@ -30,7 +31,7 @@ describe('Intersect', () => {
 
     let result = intersect.findIntersection();
 
-    result.should.be.null;
+    expect(result).to.be.null;
   });
 
   it('must find intersection in the middle', () => {

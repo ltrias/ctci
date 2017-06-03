@@ -10,7 +10,17 @@ class Intersect{
     }
 
     findIntersection(){
-        return {};
+        return this.lastNodeOf(this.list1) == this.lastNodeOf(this.list2) ? {} : null;
+    }
+
+    lastNodeOf(list){
+        let node = list.head;
+
+        while( node.next ){
+            node = node.next;
+        }
+
+        return node;
     }
 }
 
