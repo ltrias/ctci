@@ -28,10 +28,12 @@ describe('Stack', () => {
        stack.push(1);
        stack.push(2);
 
-       stack.pop();
-       stack.pop();
+       let firstPop = stack.pop();
+       let secondPop = stack.pop();
        
        stack.empty().should.be.true;
+       firstPop.should.equal(2);
+       secondPop.should.equal(1);
     });
 
     it('should peek item', () => {
