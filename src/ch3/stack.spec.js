@@ -1,7 +1,7 @@
 'use strict'
 
 let chai = require('chai');
-let Stack = require('./stack');
+let Stack = require('./stack').Stack;
 
 chai.should();
 

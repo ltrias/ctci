@@ -57,4 +57,4 @@ class StackNode{
     }
 }
 
-module.exports = Stack;
+module.exports = {Stack, StackNode};
