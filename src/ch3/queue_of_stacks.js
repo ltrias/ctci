@@ -9,39 +9,25 @@ class QueueOfStacks{
     }
     
     add(value){
-        this.mainStack.push(value);    
+        this.fillMainStack();
+        this.mainStack.push(value);
+        this.fillAuxStack();
     }
 
     remove(){
-        let result = null;
-
-        this.fillAuxStack();
-
-        result = this.auxStack.pop();
-
-        this.fillMainStack();
-
-        return result;
+        return this.auxStack.pop();
     }
 
     peek(){
-        let result = null;
-        
-        this.fillAuxStack();
-        result = this.auxStack.peek();
-        this.fillMainStack();
-
-        return result;
+        return this.auxStack.peek();
     }
 
     empty(){
-        return this.mainStack.empty();   
+        return this.auxStack.empty();   
     }
 
     toArray(){
         let result = [];
-
-        this.fillAuxStack();
 
         while( !this.auxStack.empty() ){
             let value = this.auxStack.pop();
@@ -49,6 +35,8 @@ class QueueOfStacks{
             result.push(value);
             this.mainStack.push(value)
         }
+
+        this.fillAuxStack();
 
         return result;
     }
