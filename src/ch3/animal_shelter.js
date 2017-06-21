@@ -2,48 +2,51 @@
 
 let Queue = require('./queue');
 
-class AnimalShelter extends Queue{
+class AnimalShelter {
+    constructor(){
+        this.catsQueue = new Queue();
+        this.dogsQueue = new Queue();
+        this.position = 0;
+    }
+
     enqueue(type, name){
-        this.add(new Animal(type, name));
+        let a = new Animal(type, name, this.position++);
+
+        if( a.type === 'cat'){
+            this.catsQueue.add(a);
+        }else if( a.type === 'dog' ){
+            this.dogsQueue.add(a);
+        }else{
+            throw 'Only dogs and cats allowed';
+        }
     }
 
     dequeueAny(){
-        return this.remove();
+        let firstCat = this.catsQueue.peek();
+        let firstDog = this.dogsQueue.peek();
+        let result = null;
+        
+        if( firstDog == null || firstCat != null && firstCat.position < firstDog.position ){
+            result = this.catsQueue.remove();
+        }else{
+            result = this.dogsQueue.remove();
+        }
+
+        return result;
     }
 
     dequeueDog(){
-        return this.dequeueType('dog');
+        return this.dogsQueue.remove();
     }
 
     dequeueCat(){
-        return this.dequeueType('cat');
-    }
-
-    dequeueType(type){
-        let result = null;
-
-        if( this.peek().type === type ){
-            result = this.remove();
-        }else{
-            let node = this.first.next;
-            let previous = null;
-
-            while( node ){
-                if( node.value.type === type ){
-                    previous.next = node.next;
-                    result = node.value;
-                    break;
-                }
-                previous = node;
-                node = node.next;
-            }
-        }
-        return result;
+        return this.catsQueue.remove();
     }
 }
 
 class Animal{
-    constructor(type, name){
+    constructor(type, name, position){
+        this.position = position;
         this.type = type;
         this.name = name;
     }
