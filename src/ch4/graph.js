@@ -5,6 +5,10 @@ class Graph{
     constructor(){
         this.nodes = [];
     }
+
+    addNode(node){
+        this.nodes = this.nodes.concat(node);
+    }
 }
 
 class Node {
