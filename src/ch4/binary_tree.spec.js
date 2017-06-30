@@ -61,4 +61,42 @@ describe('Binary tree', () => {
 
         tree.levels().should.be.equal(4);
     });
+
+    it('should not be BST if empty', () =>{
+        tree.isBST().should.be.false;
+    });
+
+    it('should be BST with single node', () =>{
+        tree.root = new Node(1);
+
+        tree.isBST().should.be.true;
+    });
+
+    it('should be BST', () =>{
+        let n1 = new Node(3);
+        let n2 = new Node(2);
+        let n3 = new Node(4);
+        n1.left = n2;
+        n1.right = n3;
+        n2.left = new Node(1);
+        n3.right = new Node(5);
+
+        tree.root = n1;
+
+        tree.isBST().should.be.true;
+    });
+
+    it('should not be BST', () =>{
+        let n1 = new Node(1);
+        let n2 = new Node(2);
+        let n3 = new Node(3);
+        n1.left = n2;
+        n1.right = n3;
+        n2.left = new Node(4);
+        n2.right = new Node(5);
+
+        tree.root = n1;
+
+        tree.isBST().should.be.false;
+    });
 });
