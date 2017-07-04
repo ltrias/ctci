@@ -1,27 +1,26 @@
 'use strict'
 
-class BinaryTree{
-    constructor(){
-        this.root = null;
+let BinaryTree = require('./binary_tree').BinaryTree;
+let Node = require('./binary_tree').Node;
+
+class MinimalTree extends BinaryTree{
+    create(arr){
+        this.root = this.recurseCreate(arr, 0, arr.length - 1);
     }
 
-    levels(){
-        return this.recurseLevel(this.root, 0);
-    }
-
-    recurseLevel(node, deep){
-        if( !node ){
-            return deep;
+    recurseCreate(arr, begin, end){
+        if( end < begin ){
+            return null;
         }
 
-        return Math.max(this.recurseLevel(node.left, deep + 1), this.recurseLevel(node.right, deep + 1));
+        let pivot = Math.floor((begin + end) / 2);
+        let r = new Node(arr[pivot]);
+
+        r.left = this.recurseCreate(arr, begin, pivot - 1);
+        r.right = this.recurseCreate(arr, pivot + 1, end);
+
+        return r;
     }
 }
 
-class Node {
-    constructor(data){
-        this.data = data;
-    }
-}
-
-module.exports = {BinaryTree, Node};
+module.exports = MinimalTree;

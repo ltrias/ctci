@@ -1,64 +1,46 @@
 'use strict'
 
 let chai = require('chai');
-let BinaryTree = require('./binary_tree').BinaryTree;
-let Node = require('./binary_tree').Node;
+let MinimalTree = require('./minimal_tree');
 
 chai.should();
 
-describe('Binary tree', () => {
+describe('Minimal tree', () => {
     let tree;
 
     beforeEach(() => {
-        tree = new BinaryTree();
+        tree = new MinimalTree();
     });
 
-    it('should have zero levels with 0 nodes', () =>{
-        tree.levels().should.be.equal(0);
+    it('should not be BST, have 0 nodes and 0 levels with empty array', () =>{
+        tree.create([]);
+        
+        tree.isBST().should.be.false;
+        tree.nodes().should.equal(0);
+        tree.levels().should.equal(0);
     });
 
-    it('should have one level with 1 node', () =>{
-        tree.root = new Node(1);
-
-        tree.levels().should.be.equal(1);
+    it('should be BST, have 5 nodes and 3 levels', () =>{
+        tree.create([1,2,3,4,5]);
+        
+        tree.isBST().should.be.true;
+        tree.nodes().should.equal(5);
+        tree.levels().should.equal(3);
     });
 
-    it('should have two levels with 3 nodes', () =>{
-        let n1 = new Node(1);
-        n1.left = new Node(2);
-        n1.right = new Node(3);
-
-        tree.root = n1;
-
-        tree.levels().should.be.equal(2);
+    it('should be BST, have 6 nodes and 3 levels', () =>{
+        tree.create([1,2,3,4,5,6]);
+        
+        tree.isBST().should.be.true;
+        tree.nodes().should.equal(6);
+        tree.levels().should.equal(3);
     });
 
-    it('should have three levels with 5 nodes', () =>{
-        let n1 = new Node(1);
-        let n2 = new Node(2);
-        let n3 = new Node(3);
-        n1.left = n2;
-        n1.right = n3;
-        n2.left = new Node(4);
-        n2.right = new Node(5);
-
-        tree.root = n1;
-
-        tree.levels().should.be.equal(3);
-    });
-
-    it('should have four levels with 5 unbalanced nodes', () =>{
-        let n1 = new Node(1);
-        let n2 = new Node(2);
-        let n3 = new Node(3);
-        let n4 = new Node(4);
-        n1.left = n2;
-        n1.right = n3;
-        n3.left = n4;
-        n4.right = new Node(5);
-
-        tree.root = n1;
-
-        tree.levels().should.be.equal(4);
+    it('should be BST, have 15 nodes and 4 levels', () =>{
+        tree.create([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+        
+        tree.isBST().should.be.true;
+        tree.nodes().should.equal(15);
+        tree.levels().should.equal(4);
     });
 });
