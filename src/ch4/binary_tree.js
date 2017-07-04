@@ -36,6 +36,18 @@ class BinaryTree{
 
         return this.recurseBSTCheck(node.left) && this.recurseBSTCheck(node.right);
     }
+
+    nodes(){
+        return this.recursiveNodeCount(this.root, 0);
+    }
+
+    recursiveNodeCount(node, n){
+        if( node == null ){
+            return 0;
+        }
+
+        return 1 + this.recursiveNodeCount(node.left) + this.recursiveNodeCount(node.right);
+    }
 }
 
 class Node {
