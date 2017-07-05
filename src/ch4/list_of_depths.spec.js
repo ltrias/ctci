@@ -12,8 +12,8 @@ describe('List of Depths', () => {
     let tree;
 
     beforeEach(() => {
-        listOfDepths = new ListOfDepths();
         tree = new BinaryTree();
+        listOfDepths = new ListOfDepths();
     })
 
     it('should have 0 lists when tree is empty', () => {
@@ -23,41 +23,39 @@ describe('List of Depths', () => {
     });
 
     it('should have 1 lists when tree has only root', () => {
-        let r = listOfDepths.create(tree);
-
         tree.root = new Node(1);
 
+        let r = listOfDepths.create(tree);
+
         r.length.should.equal(1);
-        r[0].root.value.should.equal(1);
+        r[0][0].value.should.equal(1);
     });
 
     it('should have 2 lists when tree has 2 nodes', () => {
-        let r = listOfDepths.create(tree);
-
         tree.root = new Node(1);
         tree.root.left = new Node(2);
 
+        let r = listOfDepths.create(tree);
+
         r.length.should.equal(2);
-        r[0].root.value.should.equal(1);
-        r[1].root.value.should.equal(2);
+        r[0][0].value.should.equal(1);
+        r[1][0].value.should.equal(2);
     });
     
     it('should have 2 lists when tree has 3 nodes', () => {
-        let r = listOfDepths.create(tree);
-
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
 
+        let r = listOfDepths.create(tree);
+
         r.length.should.equal(2);
-        r[0].root.value.should.equal(1);
-        r[1].root.value.should.equal(2);
-        r[1].root.value.should.equal(3);
+        r[0][0].value.should.equal(1);
+        r[1][0].value.should.equal(2);
+        r[1][1].value.should.equal(3);
     });
 
     it('should have 4 lists with complex list', () => {
-        let r = listOfDepths.create(tree);
-
         let root = new Node(1);
         let n2 = new Node(2);
         let n3 = new Node(3);
@@ -77,13 +75,15 @@ describe('List of Depths', () => {
 
         n6.left = n7;
 
+        let r = listOfDepths.create(tree);
+
         r.length.should.equal(4);
-        r[0].root.value.should.equal(1);
-        r[1].root.value.should.equal(2);
-        r[1].root.value.should.equal(3);
-        r[2].root.value.should.equal(4);
-        r[2].root.value.should.equal(5);
-        r[2].root.value.should.equal(6);
-        r[3].root.value.should.equal(7);
+        r[0][0].value.should.equal(1);
+        r[1][0].value.should.equal(2);
+        r[1][1].value.should.equal(3);
+        r[2][0].value.should.equal(4);
+        r[2][1].value.should.equal(5);
+        r[2][2].value.should.equal(6);
+        r[3][0].value.should.equal(7);
     });
 });
