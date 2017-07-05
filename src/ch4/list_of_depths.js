@@ -5,34 +5,38 @@ class ListOfDepths{
     create(tree){
         let result = [];
 
-        return result;
-    }
-/*
-    hasRoute(a, b){
-        let queue = [];
+        if( tree.root ){
+            let queue = [];
 
-        a.visited = true;
-        queue.push(a);
+            queue.push(new NodeWrapper(tree.root, 0));
+            
+            while( queue.length ){
+                let wrapper = queue.shift();
+                
+                if( wrapper.node ){
+                    let levelList = result[wrapper.level];
+                    if( !levelList ){
+                        levelList = [];
+                        result.push(levelList); 
+                    }
 
-        while( queue.length ){
-            let n = queue.shift();
+                    levelList.push(wrapper.node);
 
-            if( n == b ){
-                return true;
-            }
-
-            n.visited = true;
-
-            for(let c of n.children){
-                if( !c.visited ){
-                    c.visited = true;
-                    queue.push(c);
-                } 
+                    queue.push(new NodeWrapper(wrapper.node.left, wrapper.level + 1));
+                    queue.push(new NodeWrapper(wrapper.node.right, wrapper.level + 1));
+                }
             }
         }
 
-        return false;
-    }*/
+        return result;
+    }
+}
+
+class NodeWrapper{
+    constructor(node, level){
+        this.node = node;
+        this.level = level;
+    }
 }
 
 module.exports = ListOfDepths;
