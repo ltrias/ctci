@@ -26,7 +26,7 @@ describe('Check Balanced', () => {
         checker.check().should.be.true;
     });
 
-    it('should be when tree has 2 nodes', () => {
+    it('should be balanced when tree has 2 nodes', () => {
         tree.root = new Node(1);
         tree.root.left = new Node(2);
 
@@ -58,13 +58,12 @@ describe('Check Balanced', () => {
         n2.left = n4;
         n2.right = n5;
         n3.right = n6;
+        n3.right = n7;
 
-        n6.left = n7;
-
-        checker.check().should.be.false;
+        checker.check().should.be.true;
     });
 
-    it('should not be balanced with complex unblanced tree', () => {
+    it('should not be balanced with complex unbalanced tree', () => {
         let root = new Node(1);
         let n2 = new Node(2);
         let n3 = new Node(3);
@@ -80,9 +79,9 @@ describe('Check Balanced', () => {
 
         n2.left = n4;
         n2.right = n5;
-        n3.left = n7;
-        n3.right = n6;
-
-        checker.check().should.be.true;
+        n3.left = n6;
+        n6.left = n7;
+        
+        checker.check().should.be.false;
     });
 });
