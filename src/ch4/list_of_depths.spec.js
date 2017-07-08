@@ -55,7 +55,7 @@ describe('List of Depths', () => {
         r[1][1].value.should.equal(3);
     });
 
-    it('should have 4 lists with complex list', () => {
+    it('should have 4 lists with complex tree', () => {
         let root = new Node(1);
         let n2 = new Node(2);
         let n3 = new Node(3);
