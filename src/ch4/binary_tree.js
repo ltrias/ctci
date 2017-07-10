@@ -21,20 +21,25 @@ class BinaryTree{
         if( !this.root ){
             return false;
         } else {
-            return this.recurseBSTCheck(this.root);
+            return this.recurseBSTCheck(this.root, null, null);
         }
     }
 
-    recurseBSTCheck(node){
+    recurseBSTCheck(node, min, max){
         if( !node ){
             return true;
         }
 
-        if( (node.left && node.left.value > node.value) || (node.right && node.right.value < node.value) ){
+
+        if( (min != null && node.value <= min) || (max != null && node.value > max ) ){
             return false;
         }
 
-        return this.recurseBSTCheck(node.left) && this.recurseBSTCheck(node.right);
+        if( !this.recurseBSTCheck(node.left, min, node.value) || !this.recurseBSTCheck(node.right, node.value, max)){
+            return false;
+        }
+
+        return true;
     }
 
     nodes(){
