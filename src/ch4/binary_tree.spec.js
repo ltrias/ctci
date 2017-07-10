@@ -100,6 +100,19 @@ describe('Binary tree', () => {
         tree.isBST().should.be.false;
     });
 
+    it('should not be BST with book example', () =>{
+        let n1 = new Node(20);
+        let n2 = new Node(10);
+        let n3 = new Node(30);
+        n1.left = n2;
+        n1.right = n3;
+        n2.right = new Node(25);
+
+        tree.root = n1;
+
+        tree.isBST().should.be.false;
+    });
+
 
 
 
