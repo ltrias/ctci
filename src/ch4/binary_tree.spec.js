@@ -113,24 +113,6 @@ describe('Binary tree', () => {
         tree.isBST().should.be.false;
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     it('should have 0 nodes', () =>{
         tree.nodes().should.be.equal(0);
     });
