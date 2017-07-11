@@ -34,6 +34,8 @@ describe('Sucessor', () => {
         n1.left = n2;
         n1.right = n3;
 
+        tree.root = n1;
+
         expect(sucessor.find(5)).to.be.null;
     });
 
@@ -66,8 +68,6 @@ describe('Sucessor', () => {
 
  */
 function buildComplexTree(){
-    let result = new BinaryTree();
-
     let n9 = new Node(9);
     let n4 = new Node(4);
     let n15 = new Node(15);
@@ -104,7 +104,5 @@ function buildComplexTree(){
     n13.left = n12;
     n12.parent = n13;
 
-    result.root = n9;
-
-    return result;
+    return n9;
 }
