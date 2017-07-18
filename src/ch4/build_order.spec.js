@@ -15,7 +15,7 @@ describe('Build order', () => {
         buildOrder.find().should.deep.equal(['f', 'e', 'a', 'b', 'd', 'c']);
     });
 
-    it.skip('should return null because couldt not find a sequence', () => {
+    it.skip('should return null because could not find a sequence', () => {
         
     });
 
