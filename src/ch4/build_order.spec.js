@@ -15,8 +15,10 @@ describe('Build order', () => {
         buildOrder.find().should.deep.equal(['f', 'e', 'a', 'b', 'd', 'c']);
     });
 
-    it.skip('should return null because could not find a sequence', () => {
-        
+    it('should return null when can not find a sequence due to circular dependency', () => {
+        let projects = ['a', 'b', 'c'];
+        let dependencies = [{'b':'a'}, {'c':'b'}, {'a':'c'}];
+        let buildOrder = new BuildOrder(projects, dependencies);
+        expect(buildOrder.find()).to.be.null;
     });
-
 });
