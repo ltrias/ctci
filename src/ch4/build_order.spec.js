@@ -12,6 +12,10 @@ describe('Build order', () => {
         let projects = ['a', 'b', 'c', 'd', 'e', 'f'];
         let dependencies = [{'a':'d'}, {'f':'b'}, {'b':'d'}, {'f':'a'}, {'d':'c'}];
         let buildOrder = new BuildOrder(projects, dependencies);
+
+        buildOrder.graph.should.not.be.null;
+        buildOrder.graph.nodes.length.should.equal(6);
+
         buildOrder.find().should.deep.equal(['f', 'e', 'a', 'b', 'd', 'c']);
     });
 
@@ -19,6 +23,11 @@ describe('Build order', () => {
         let projects = ['a', 'b', 'c'];
         let dependencies = [{'b':'a'}, {'c':'b'}, {'a':'c'}];
         let buildOrder = new BuildOrder(projects, dependencies);
+
+        buildOrder.graph.should.not.be.null;
+        buildOrder.graph.nodes.length.should.equal(3);
+
+
         expect(buildOrder.find()).to.be.null;
     });
 });
