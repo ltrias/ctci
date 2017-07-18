@@ -23,7 +23,13 @@ class BuildOrder {
     }
 
     find(){
+        let independentNodes = this.graph.nodes.filter(n => {
+            n.children.length === 0;
+        });
 
+        if( independentNodes.length === 0 ){
+            return null;
+        }
     }
 }
 
